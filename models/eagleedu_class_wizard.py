@@ -14,7 +14,7 @@ class EagleeduClassDetails(models.Model):
     class_id = fields.Many2one('eagleedu.class.division', string="Class", required=True,
                                help="Students are alloted to this Class")
     @api.multi
-    def action_assign_class(self):
+    def action_assigning_class(self):
         """Assign the class for the selected students after admission by the faculties"""
         # search max roll no of the class
         max_roll=self.env['eagleedu.class.history'].search([],order='roll_no asc', limit=1)

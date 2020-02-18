@@ -16,7 +16,7 @@ This module for This is a e education manament system
             'views/eagleedu_register.xml',
             'views/eagleedu_application.xml',
             'views/eagleedu_student.xml',
-            'views/eagleedu_assign_class.xml',
+            'views/eagleedu_assigning_class.xml',
             'views/eagleedu_instructor.xml',
             # 'views/eagleedu_main_menu.xml',
             'views/eagleedu_class_division.xml',

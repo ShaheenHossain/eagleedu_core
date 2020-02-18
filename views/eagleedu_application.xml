@@ -119,9 +119,9 @@
         <field name="name">Application Seq</field>
         <field name="res_model">eagleedu.application</field>
         <field name="code">eagleedu.application</field>
-        <field name="prefix">SR</field>
+        <field name="prefix">SA%(year)s</field>
         <field name="number_increment">1</field>
-        <field name="padding">6</field>
+        <field name="padding">4</field>
     </record>
 
         <record id="application_search" model="ir.ui.view">

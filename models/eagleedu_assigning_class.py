@@ -3,8 +3,8 @@ from eagle.exceptions import ValidationError
 
 from datetime import datetime
 
-class EagleeduAssignClass(models.Model):
-    _name = 'eagleedu.assign.class'
+class EagleeduAssigningClass(models.Model):
+    _name = 'eagleedu.assigning.class'
     _description = 'Assign the Students to Class'
     # _inherit = ['mail.thread']
     # _rec_name = 'class_assign_name'
@@ -17,7 +17,9 @@ class EagleeduAssignClass(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done')],
                              string='State', required=True, default='draft', track_visibility='onchange')
 
-    assign_date = fields.Datetime(string='Assigned',default=lambda self: fields.datetime.today())
+    assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
+
+    #assign_date = fields.Datetime(string='Asigned Date', default=datetime.today())
 
     @api.model
     def get_class_assign_name(self):
@@ -28,7 +30,7 @@ class EagleeduAssignClass(models.Model):
 
 
     @api.multi
-    def assign_class(self):
+    def assigning_class(self):
         max_roll = self.env['eagleedu.class.history'].search([('class_id','=',self.admitted_class.id)], order='roll_no desc', limit=1)
         if max_roll.roll_no:
             next_roll = max_roll.roll_no
