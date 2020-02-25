@@ -9,6 +9,7 @@ class EagleeduClass(models.Model):
     _description = "Class Standard Level"
     sequence=fields.Integer("Sequence")
     name = fields.Char(string='Class', required=True, help="Enter the Name of the Class")
+    code = fields.Char(string='Code', required=True, help="Enter the Code of the Class")
     standard_class_id = fields.Many2one('eagleedu.standard_class', string='Class', help="Enter the Name of the Class")
 
     class_section_id = fields.Many2one('eagleedu.class_section', string='Section Name', help="Enter the Name of the Section")

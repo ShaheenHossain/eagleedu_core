@@ -7,6 +7,7 @@ class EagleeduClassDivision(models.Model):
     _name = 'eagleedu.class.division'
     _description = "Class room"
 
+
     name = fields.Char(string='Name')
     display=fields.Char('Class Name')
     actual_strength = fields.Integer(string='Max student No', help="Total strength of the class")
