@@ -24,6 +24,7 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="code"/>
                         </group>
                         <group>
                             <field name="roman_name"/>

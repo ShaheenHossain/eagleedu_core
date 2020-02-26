@@ -10,6 +10,8 @@ class EagleeduClassDivision(models.Model):
 
     name = fields.Char(string='Name')
     display=fields.Char('Class Name')
+    roomname=fields.Many2one('eagleedu.roomname', string="Room Name")
+    roomnumber=fields.Many2one('eagleedu.roomnumber', string="Room Number")
     actual_strength = fields.Integer(string='Max student No', help="Total strength of the class")
     instructor_id = fields.Many2one('eagleedu.instructor', string='Class Teacher', help="Class teacher/Faculty")
     # class_division_id = fields.Char('eagleedu.class.division', string='Class Division', help="Class Division")
@@ -34,7 +36,7 @@ class EagleeduClassDivision(models.Model):
         className=''
         divisionName=''
         sectionName=''
-        batchName=batch.academic_year_code
+        batchName=batch.ay_code
         if class_id.id>0:
             className=class_id.name
         if division_id.id>0:

@@ -11,7 +11,7 @@ class EagleeduSyllabus(models.Model):
 
     name = fields.Char(string='Name', help="Enter the Name of the Syllabus")
     code = fields.Char('Code', compute="_get_code")
-    # has_group=fields.Integer(string='Has Group')
+    has_group=fields.Integer(string='Has Group')
     divisional=fields.Boolean("Grouping ?")
     division_id = fields.Many2one('eagleedu.class.division', string='Group')
     display=fields.Char('Syllabus Display',help="This is printed on the marksheet as Subject")
@@ -59,23 +59,21 @@ class EagleeduSyllabus(models.Model):
             reccode=''
             if rec.paper and rec.subject_id:
                 recname=rec.subject_id.name +'-'+ rec.paper
-                reccode=rec.subject_id.subject_code +'-'+ rec.paper
+                reccode=rec.subject_id.code +'-'+ rec.paper
             elif rec.subject_id:
                 recname=rec.subject_id.name
-                reccode=rec.subject_id.subject_code
+                reccode=rec.subject_id.code
             rec.display = recname
             if recname != '':
                 if  rec.class_id :
                     if rec.academic_year :
                         if rec.divisional == True:
-                            recname=str(recname + rec.class_id.name) +'-(' + str(rec.academic_year.name) + ')' # +' ('+rec.division_id.name +')'
-                            reccode=str(reccode + rec.class_id.code) + '-(' + str(rec.academic_year.academic_year_code + ')' # +' ('+rec.division_id.code +')'
+                            recname=recname + rec.class_id.name +'-' + rec.academic_year.name # +' ('+rec.division_id.name +')'
+                            reccode=reccode + rec.class_id.code +'-' + rec.academic_year.ay_code # +' ('+rec.division_id.code +')'
                         else:
-                            recname = str(recname + rec.class_id.name) + '-(' + str(rec.academic_year.name + ')'
-                            reccode = str(reccode + rec.class_id.code) + '-(' + str(rec.academic_year.academic_year_code + ')'
+                            recname = recname + rec.class_id.name + '-' + rec.academic_year.name
+                            reccode = reccode + rec.class_id.code + '-' + rec.academic_year.ay_code
                             rec.division_id=False
-                            # rec.name = str(rec.admitted_class.name) + '(Assign on ' + str(rec.assign_date) + ')'
-
             rec.name=recname
             rec.code=reccode
     @api.model
@@ -85,4 +83,3 @@ class EagleeduSyllabus(models.Model):
             rec.total_mark=rec.tut_mark+rec.subj_mark+rec.obj_mark+rec.prac_mark
             rec.pass_mark=rec.tut_pass+rec.subj_pass+rec.obj_pass+rec.prac_pass
     _sql_constraints = [('unque_syllabus_batch_level','unique(subject_id,academic_year,division_id,class_id,paper)','Subject Already added!'),]
-

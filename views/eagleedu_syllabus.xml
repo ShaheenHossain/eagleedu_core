@@ -28,7 +28,7 @@
                                 <field name="academic_year" required="1"/>
                                 <field name="class_id" required="1"/>
                                 <field name="divisional" required="1" attrs="{'invisible': [('has_group', '=',0)]}"/>
-<!--                                <field name="has_group" required="1" attrs="{'invisible': True}"/>-->
+                                <field name="has_group" required="1" attrs="{'invisible': True}"/>
                                 <field name="division_id" attrs="{'invisible': [('divisional', '=',False)]}"/>
                                 <field name="subject_id" required="1"/>
                                 <field name="paper"/>

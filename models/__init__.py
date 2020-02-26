@@ -13,3 +13,5 @@ from . import eagleedu_class_history
 from . import eagleedu_subject
 from . import eagleedu_syllabus
 from . import eagleedu_register
+from . import eagleedu_roomname
+from . import eagleedu_roomnumber

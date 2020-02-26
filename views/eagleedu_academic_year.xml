@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Academic Year">
                 <field name="name"/>
-                <field name="academic_year_code"/>
+                <field name="ay_code"/>
                 <field name="academic_year_start_date"/>
                 <field name="academic_year_end_date"/>
             </tree>
@@ -27,7 +27,7 @@
                             <field name="sequence"/>
                         </group>
                         <group>
-                            <field name="academic_year_code"/>
+                            <field name="ay_code"/>
                             <field name="academic_year_end_date"/>
                             <field name="active"/>
                         </group>
