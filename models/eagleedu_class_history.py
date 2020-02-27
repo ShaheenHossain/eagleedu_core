@@ -15,14 +15,14 @@ class EagleeduClassHistory(models.Model):
     class_id = fields.Many2one('eagleedu.class.division', string='Class',
                                help="Select the class")
     level=fields.Many2one('eagleedu.standard_class',string='level',related='class_id.class_id',store=True) #related='class_id.class_id'
-    section=fields.Many2one('eagleedu.class_section',string='section',related='class_id.section_id') #
+    section=fields.Many2one('eagleedu.class.section',string='section',related='class_id.section_id') #
     from_date=fields.Date('From')
     till_date=fields.Date('Till')
     student_id = fields.Many2one('eagleedu.student', string='Students')
     roll_no=fields.Integer('Roll No',required=True)
     compulsory_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
                                          'compulsory_subjects','compulsory_for',string='Compulsory')
-    selective_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_1_rel',
+    selective_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
                                         'selective_subjects','selective_for',string='Selective')
     optional_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_optional_rel',
                                         'optional_subjects','optional_for',string='Optional')

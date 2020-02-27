@@ -10,7 +10,7 @@ access_eagleedu_instructor,access.eagleedu.instructor,model_eagleedu_instructor,
 access_eagleedu_class_section,access.eagleedu.class_section,model_eagleedu_class_section,,1,1,1,1
 access_eagleedu_academic_year,access.eagleedu.academic.year,model_eagleedu_academic_year,,1,1,1,1
 access_eagleedu_standard_class,access.eagleedu.standard_class,model_eagleedu_standard_class,,1,1,1,1
-access_eagleedu_class_section,access.eagleedu.class_section,model_eagleedu_class_section,,1,1,1,1
+access_eagleedu_class_section,access.eagleedu.class.section,model_eagleedu_class_section,,1,1,1,1
 access_eagleedu_subject,access.eagleedu.subject,model_eagleedu_subject,,1,1,1,1
 access_eagleedu_syllabus,access.eagleedu.syllabus,model_eagleedu_syllabus,,1,1,1,1
 access_eagleedu_register,access.eagleedu.register,model_eagleedu_register,,1,1,1,1

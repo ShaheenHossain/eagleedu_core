@@ -54,7 +54,7 @@
                                 <field name="academic_year" string="Academic Year"/>
                                 <field name="standard_class" string="Class"/>
                                 <field name="group_division" string="Group/Division"/>
-                                <field name="class_section_id" string="Section"/>
+                                <field name="section_id" string="Section"/>
                                 <field name="roll_no" string="Roll No."/>
                               </group>
                             <separator string="Student Information"/>

@@ -7,6 +7,9 @@
         <field name="arch" type="xml">
             <tree string="Class Division">
                 <field name="division_id"/>
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="roomnong_id"/>
                 <field name="academic_year_id"/>
             </tree>
         </field>
@@ -27,19 +30,15 @@
 -->
                     </div>
                         <group col="4">
-                            <field name="name"/>
-                            <field name="display"/>
-                            <field name="roomname"/>
-                            <field name="roomnumber"/>
+                            <field name="name" placeholder="set the Academic Year, Class, Section Room No. and Room Name"/>
+                            <field name="room_id" placeholder="Rose, Tulip"/>
+                            <field name="roomnong_id" placeholder="201,202"/>
                             <field name="actual_strength"/>
                             <field name="academic_year_id" attrs="{'readonly':[('id','>',0)]}"/>
                             <field name="instructor_id"/>
                             <field name="class_id" attrs="{'readonly':[('id','>',0)]}"/>
                             <field name="division_id" attrs="{'readonly':[('id','>',0)]}"/>
                             <field name="section_id" attrs="{'readonly':[('id','>',0)]}"/>
-<!--
-                            <field name="class_room" />
--->
                         </group>
                     <notebook>
                         <page string="Students">
