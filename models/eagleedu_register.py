@@ -6,6 +6,7 @@ class EagleeduRegister(models.Model):
     _name='eagleedu.register'
     _description='this admission register book'
     name=fields.Char('Register Book Name', compute='get_name')
+    class_category=fields.Many2one('eagleedu.class.category',required=True)
     standard_class=fields.Many2one('eagleedu.standard_class',required=True)
     academic_year=fields.Many2one('eagleedu.academic.year', "For the year" , required=True)
     start_time = fields.Datetime(string='Application Starts on',default=lambda self: fields.datetime.now())

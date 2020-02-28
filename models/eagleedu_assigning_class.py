@@ -117,6 +117,7 @@ class EagleeduAssigningClass(models.Model):
 
 class EagleeduStudentList(models.Model):
     _name = 'eagleedu.student.list'
+    _description = 'Eagleedu Student List'
     # _inherit = ['mail.thread']
 
     connect_id = fields.Many2one('eagleedu.assigning.class', string='Class')

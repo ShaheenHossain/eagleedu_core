@@ -28,6 +28,7 @@ This module for This is a e education manament system
             'views/eagleedu_subject.xml',
             'views/eagleedu_roomname.xml',
             'views/eagleedu_roomnumber.xml',
+            'views/eagleedu_class_category.xml',
             'views/eagleedu_syllabus.xml',
             'security/ir.model.access.csv',
             'reports/print_reports.xml',

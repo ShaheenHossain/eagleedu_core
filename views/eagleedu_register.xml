@@ -24,6 +24,7 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="class_category"/>
                             <field name="standard_class"/>
                             <field name="academic_year"/>
                             <field name="start_time"/>

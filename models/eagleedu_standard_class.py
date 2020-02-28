@@ -10,6 +10,7 @@ class EagleeduClass(models.Model):
     sequence=fields.Integer("Sequence")
     name = fields.Char(string='Class', required=True, help="Enter the Name of the Class")
     code = fields.Char(string='Code', required=True, help="Enter the Code of the Class")
+    class_category = fields.Many2one('eagleedu.class.category', string='Class Category', help="Enter the Name of the Class")
     standard_class_id = fields.Many2one('eagleedu.standard_class', string='Class', help="Enter the Name of the Class")
 
     section_id = fields.Many2one('eagleedu.class.section', string='Section Name', help="Enter the Name of the Section")
@@ -20,3 +21,8 @@ class EagleeduClass(models.Model):
     group_division_ids = fields.Many2many('eagleedu.group_division', string='Groups Divisions', help="Enter the Name of the Group division")
     subjects_ids = fields.Many2many('eagleedu.subject', string='Subjects Names ', help="Enter the Name of the Group division")
 
+    @api.onchange ('class_category')
+    def set_standard_class(self):
+        for rec in self:
+            if rec.class_category:
+                rec.name =rec.class_category.name
