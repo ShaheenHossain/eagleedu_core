@@ -21,8 +21,8 @@ class EagleeduClass(models.Model):
     group_division_ids = fields.Many2many('eagleedu.group_division', string='Groups Divisions', help="Enter the Name of the Group division")
     subjects_ids = fields.Many2many('eagleedu.subject', string='Subjects Names ', help="Enter the Name of the Group division")
 
-    @api.onchange ('class_category')
-    def set_standard_class(self):
-        for rec in self:
-            if rec.class_category:
-                rec.name =rec.class_category.name
+    # @api.onchange ('class_category')
+    # def set_standard_class(self):
+    #     for rec in self:
+    #         if rec.class_category:
+    #             rec.name =rec.class_category.name

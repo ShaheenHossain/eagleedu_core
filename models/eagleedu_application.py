@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from eagle import models, fields, api, _
+from datetime import date
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 
 class EagleeduApplication(models.Model):
     _name = 'eagleedu.application'
@@ -26,6 +31,59 @@ class EagleeduApplication(models.Model):
     st_mother_email = fields.Char(string="Mother Email", help="Proud to say my mother is")
     mother_mobile = fields.Char(string="Mother's Mobile No", help="mother's Mobile No")
     date_of_birth = fields.Date(string="Date Of birth", help="Enter your DOB")
+    age = fields.Char(string="Age", compute="_compute_age")
+
+
+    @api.multi
+    @api.depends('date_of_birth')
+    def _compute_age(self):
+        for emp in self:
+            age = relativedelta(datetime.now().date(), fields.Datetime.from_string(emp.date_of_birth)).years
+            emp.age = str(age) + " Years"
+
+
+
+    # age = fields.Char(string='Age', compute='_compute_age')
+    #
+    # @api.depends('date_of_birth')
+    # def _compute_age(self):
+    #     for rec in self:
+    #         dt = rec.date_of_birth
+    #         d2 = date.today()
+    #         d1 = datetime.strptime(dt, "%Y-%m-%d").date()
+    #         rd = relativedelta(d2, d1)
+    #         rec.age = str(rd.years) + ' years ' + str(rd.months) + ' months ' + str(rd.days) + ' days'
+
+
+    # age = fields.Integer(string="Age",  compute='_compute_student_age')
+
+    # @api.depends('date_of_birth')
+    # def _compute_student_age(self):
+    #     '''Method to calculate student age'''
+    #     current_dt = date.today()
+    #     for rec in self:
+    #         if rec.date_of_birth:
+    #             start = rec.date_of_birth
+    #             age_calc = ((current_dt - start).days / 365.24)
+    #             # Age should be greater than 0
+    #             if age_calc > 0.0:
+    #                 rec.age = age_calc
+
+    # @api.constrains('date_of_birth')
+    # def check_age(self):
+    #     '''Method to check age should be greater than 5'''
+    #     current_dt = date.today()
+    #     if self.date_of_birth:
+    #         start = self.date_of_birth
+    #         age_calc = ((current_dt - start).days / 365)
+    #         # Check if age less than 5 years
+    #         if age_calc < 5:
+    #             raise ValidationError(_('''Age of student should be greater
+    #              than 5 years!'''))
+
+
+
+
     st_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
                                 string='Gender', required=False, track_visibility='onchange',
                                 help="Your Gender is ")
@@ -83,8 +141,19 @@ class EagleeduApplication(models.Model):
         res = super(EagleeduApplication, self).create(vals)
         return res
 
+    # def _compute_age(born):
+    #     today = date.today()
+    #     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 
+    # @api.depends('date_of_birth')
+    # def _compute_age(self):
+    #     for rec in self:
+    #         dt = rec.date_of_birth
+    #         d2 = date.today()
+    #         d1 = datetime.strptime(dt, "%Y-%m-%d").date()
+    #         rd = relativedelta(d2, d1)
+    #         rec.age = str(rd.years) + ' years ' + str(rd.months) + ' months ' + str(rd.days) + ' days'
 
     @api.multi
     def send_to_verify(self):

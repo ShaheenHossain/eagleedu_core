@@ -12,7 +12,7 @@ class EagleeduClassHistory(models.Model):
 
     academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year',
                                        help="Select the Academic Year")
-    class_id = fields.Many2one('eagleedu.class.division', string='Class',
+    full_class_id = fields.Many2one('eagleedu.class.division', string='Class',
                                help="Select the class")
     level=fields.Many2one('eagleedu.standard_class',string='level',related='class_id.class_id',store=True) #related='class_id.class_id'
     section=fields.Many2one('eagleedu.class.section',string='section',related='class_id.section_id') #

@@ -34,6 +34,7 @@ class EagleeduStudent(models.Model):
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
     standard_class = fields.Many2one('eagleedu.standard_class', string="Class Name", help="Enter Class Name")
     class_id = fields.Many2one('eagleedu.standard_class', string="Class")
+    full_class_id = fields.Many2one('eagleedu.class.division', string="Class")
     section_id = fields.Many2one('eagleedu.class.section', string="Section", help="Enter Class Section Name")
     group_division = fields.Many2one('eagleedu.group_division', string="Group Name", help="Enter Class Section Name")
     academic_year = fields.Many2one('eagleedu.academic.year', string= "Academic Year", help="Select Academic Year")
