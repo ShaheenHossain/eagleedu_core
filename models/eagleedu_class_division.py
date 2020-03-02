@@ -18,11 +18,11 @@ class EagleeduClassDivision(models.Model):
     # class_division_id = fields.Char('eagleedu.class.division', string='Class Division', help="Class Division")
     academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year',
                                        help="Select the Academic Year", required=True)
-    class_id = fields.Many2one('eagleedu.standard_class', string='Class', required=True,
+    class_id = fields.Many2one('eagleedu.class', string='Class', required=True,
                                help="Select the Class")
     division_id = fields.Many2one('eagleedu.group_division', string='Group Division',help="Select the Division")
     section_id = fields.Many2one('eagleedu.class.section', string='Section', help="Select the Section")
-    students_ids = fields.One2many('eagleedu.student', 'standard_class', string='Students')
+    students_ids = fields.One2many('eagleedu.student', 'class_id', string='Students')
     # student_count = fields.Integer(string='Students Count', compute='_get_student_count')
     # class_room=fields.Many2one('education.rooms','Room No')
 
@@ -30,7 +30,7 @@ class EagleeduClassDivision(models.Model):
     def create(self, vals):
         """Return the name as a str of class + division"""
         #res = super(EagleeduClassDivision, self).create(vals)
-        class_id = self.env['eagleedu.standard_class'].browse(vals['class_id'])
+        class_id = self.env['eagleedu.class'].browse(vals['class_id'])
         division_id = self.env['eagleedu.group_division'].browse(vals['division_id'])
         section_id = self.env['eagleedu.class.section'].browse(vals['section_id'])
         batch = self.env['eagleedu.academic.year'].browse(vals['academic_year_id'])

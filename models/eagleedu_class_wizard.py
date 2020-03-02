@@ -7,7 +7,7 @@ class EagleeduClassDetails(models.Model):
     _name = 'eagleedu.class.details'
     _description = "Student Allocation"
 
-    student_class = fields.Many2one('eagleedu.standard_class', string="Admission For", readonly=True,
+    student_class = fields.Many2one('eagleedu.class', string="Admission For", readonly=True,
                                     help="Select the Class to which the students applied")
     assigned_by = fields.Many2one('res.users', string='Assigned By', default=lambda self: self.env.uid,
                                   help="Student Assigning is done by")
@@ -24,7 +24,7 @@ class EagleeduClassDetails(models.Model):
             next_roll=0
 
         for rec in self:
-            assign_request = self.env['eagleedu.student.standard_class'].browse(self.env.context.get('active_ids'))
+            assign_request = self.env['eagleedu.student.class'].browse(self.env.context.get('active_ids'))
             assign_request.get_student_list()
             if not assign_request.student_list:
                 raise ValidationError(_('No Student Lines'))

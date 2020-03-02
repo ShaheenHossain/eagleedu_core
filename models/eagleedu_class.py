@@ -5,13 +5,13 @@ from eagle import fields, models, api, _
 
 
 class EagleeduClass(models.Model):
-    _name = 'eagleedu.standard_class'
+    _name = 'eagleedu.class'
     _description = "Class Standard Level"
     sequence=fields.Integer("Sequence")
     name = fields.Char(string='Class', required=True, help="Enter the Name of the Class")
     code = fields.Char(string='Code', required=True, help="Enter the Code of the Class")
     class_category = fields.Many2one('eagleedu.class.category', string='Class Category', help="Enter the Name of the Class")
-    standard_class_id = fields.Many2one('eagleedu.standard_class', string='Class', help="Enter the Name of the Class")
+    class_id = fields.Many2one('eagleedu.class', string='Class', help="Enter the Name of the Class")
 
     section_id = fields.Many2one('eagleedu.class.section', string='Section Name', help="Enter the Name of the Section")
     sections_ids = fields.Many2many('eagleedu.class.section', string='Sections Names', help="Enter the Name of the Section")

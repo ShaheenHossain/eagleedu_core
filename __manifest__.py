@@ -21,7 +21,7 @@ This module for This is a e education manament system
             # 'views/eagleedu_main_menu.xml',
             'views/eagleedu_class_division.xml',
             'views/eagleedu_academic_year.xml',
-            'views/eagleedu_standard_class.xml',
+            'views/eagleedu_class.xml',
             'views/eagleedu_class_section.xml',
             'views/eagleedu_group_division.xml',
             'views/eagleedu_class_history.xml',

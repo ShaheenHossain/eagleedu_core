@@ -15,7 +15,7 @@ class EagleeduSyllabus(models.Model):
     divisional=fields.Boolean("Grouping ?")
     division_id = fields.Many2one('eagleedu.class.division', string='Group')
     display=fields.Char('Syllabus Display',help="This is printed on the marksheet as Subject")
-    class_id = fields.Many2one('eagleedu.standard_class', string='Class ID')
+    class_id = fields.Many2one('eagleedu.class', string='Class ID')
     subject_id = fields.Many2one('eagleedu.subject', string='Subject')
     academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year')
     paper = fields.Char( string='Paper')

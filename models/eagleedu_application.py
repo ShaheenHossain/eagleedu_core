@@ -33,6 +33,11 @@ class EagleeduApplication(models.Model):
     date_of_birth = fields.Date(string="Date Of birth", help="Enter your DOB")
     age = fields.Char(string="Age", compute="_compute_age")
 
+    register_id = fields.Many2one('eagleedu.register', string="Admission Register", required=False,
+                                      help="Enter the admission register Name")
+    academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year',string='Academic Year',
+                                       help="Choose Academic year for which the admission is choosing")
+
 
     @api.multi
     @api.depends('date_of_birth')
@@ -115,12 +120,15 @@ class EagleeduApplication(models.Model):
                                      help="Select the Country")
     guardian_name = fields.Char(string="Guardian's Name", help="Proud to say my guardian is")
     religious_id = fields.Many2one('eagleedu.religious', string="Religious", help="My Religion is ")
-    standard_class = fields.Many2one('eagleedu.standard_class')
+
+    #for import previous data
+    class_id = fields.Many2one('eagleedu.class.division')
     academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year')
     group_division = fields.Many2one('eagleedu.group_division')
     student_id=fields.Char('Student Id')
     roll_no = fields.Integer('Roll No')
     section=fields.Char('Section')
+
     state = fields.Selection([('draft', 'Draft'), ('verification', 'Verify'),
                                ('approve', 'Approve'), ('done', 'Done')],
                               string='Status', required=True, default='draft', track_visibility='onchange')
@@ -197,7 +205,8 @@ class EagleeduApplication(models.Model):
                 'st_passport_no': rec.st_passport_no,
                 'nationality': rec.nationality.id,
                 'academic_year': rec.academic_year.id,
-                'standard_class': rec.standard_class.id,
+                # 'standard_class': rec.standard_class.id,
+                'admission_class': rec.register_id.standard.id,
                 'group_division': rec.group_division.id,
                 'house_no': rec.house_no,
                 'road_no': rec.road_no,

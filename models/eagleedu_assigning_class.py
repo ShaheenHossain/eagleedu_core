@@ -10,8 +10,7 @@ class EagleeduAssigningClass(models.Model):
     # _rec_name = 'class_assign_name'
     name = fields.Char('Class Assign Register', compute='get_class_assign_name')
     keep_roll_no=fields.Boolean("keep Roll No")
-    class_id = fields.Many2one('eagleedu.standard_class', string='Class')
-    full_class_id = fields.Many2one('eagleedu.class.division', string='Class')
+    class_id = fields.Many2one('eagleedu.class', string='Class')
     student_list = fields.One2many('eagleedu.student.list', 'connect_id', string="Students")
     admitted_class = fields.Many2one('eagleedu.class.division', string="Admitted Class" )
     assigned_by = fields.Many2one('res.users', string='Assigned By', default=lambda self: self.env.uid)
@@ -32,7 +31,7 @@ class EagleeduAssigningClass(models.Model):
 
     @api.multi
     def assigning_class(self):
-        max_roll = self.env['eagleedu.class.history'].search([('full_class_id','=',self.admitted_class.id)], order='roll_no desc', limit=1)
+        max_roll = self.env['eagleedu.class.history'].search([('class_id','=',self.admitted_class.id)], order='roll_no desc', limit=1)
         if max_roll.roll_no:
             next_roll = max_roll.roll_no
         else:
@@ -61,7 +60,7 @@ class EagleeduAssigningClass(models.Model):
                 el_subjects.append(sub.id)
             for line in self.student_list:
                 st=self.env['eagleedu.student'].search([('id','=',line.student_id.id)])
-                st.full_class_id = rec.admitted_class.id
+                st.class_id = rec.admitted_class.id
                 if self.keep_roll_no != True:
                     next_roll = next_roll + 1
                     line.roll_no=next_roll
@@ -71,7 +70,7 @@ class EagleeduAssigningClass(models.Model):
                 # create student history
 
                 self.env['eagleedu.class.history'].create({'academic_year_id': rec.admitted_class.academic_year_id.id,
-                                                            'full_class_id': rec.admitted_class.id,
+                                                            'class_id': rec.admitted_class.id,
                                                             'student_id': line.student_id.id,
                                                             'roll_no': line.roll_no,
                                                             'compulsory_subjects': [(6, 0,com_subjects)],
@@ -99,13 +98,13 @@ class EagleeduAssigningClass(models.Model):
                 line.unlink()
             # TODO apply filter not to get student assigned previously
             students = self.env['eagleedu.student'].search([
-                ('full_class_id', '=', rec.admitted_class.id),('assigned', '=', False)])
+                ('class_id', '=', rec.admitted_class.id),('assigned', '=', False)])
             if not students:
                 raise ValidationError(_('No Students Available.. !'))
             values = []
             for stud in students:
                 stud_line = {
-                    'full_class_id': rec.full_class_id.id,
+                    'class_id': rec.class_id.id,
                     'student_id': stud.id,
                     'connect_id': rec.id,
                     'roll_no': stud.application_id.roll_no
@@ -124,7 +123,6 @@ class EagleeduStudentList(models.Model):
     connect_id = fields.Many2one('eagleedu.assigning.class', string='Class')
     student_id = fields.Many2one('eagleedu.student', string='Student')
     stu_id=fields.Char(string="Id",related='student_id.student_id')
-    class_id = fields.Many2one('eagleedu.standard_class', string='Level')
-    full_class_id = fields.Many2one('eagleedu.class.division', string='Level')
+    class_id = fields.Many2one('eagleedu.class', string='Level')
     section_id = fields.Many2one('eagleedu.class.section', string='Class')
     roll_no = fields.Integer( string='Roll No')

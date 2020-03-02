@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <eagle>
 
-    <record id="view_eagleedu_standard_class_tree" model="ir.ui.view">
-        <field name="name">eagleedu.standard_class.tree</field>
-        <field name="model">eagleedu.standard_class</field>
+    <record id="view_eagleedu_class_tree" model="ir.ui.view">
+        <field name="name">eagleedu.class.tree</field>
+        <field name="model">eagleedu.class</field>
         <field name="arch" type="xml">
             <tree string="Standard Class or Level">
                 <field name="name"/>
@@ -15,9 +15,9 @@
         </field>
     </record>
 
-    <record id="view_eagleedu_standard_class_form" model="ir.ui.view">
-        <field name="name">eagleedu.standard_class.form</field>
-        <field name="model">eagleedu.standard_class</field>
+    <record id="view_eagleedu_class_form" model="ir.ui.view">
+        <field name="name">eagleedu.class.form</field>
+        <field name="model">eagleedu.class</field>
         <field name="arch" type="xml">
             <form string="Standard Class or level">
                 <sheet>
@@ -45,9 +45,9 @@
         </field>
     </record>
 
-    <record id="action_eagleedu_standard_class" model="ir.actions.act_window">
-        <field name="name">Standard Class</field>
-        <field name="res_model">eagleedu.standard_class</field>
+    <record id="action_eagleedu_class" model="ir.actions.act_window">
+        <field name="name">Standard Class Level</field>
+        <field name="res_model">eagleedu.class</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
@@ -60,10 +60,10 @@
 
     <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
 
-    <menuitem id="eagleedu_submenu_standard_class_conf" name="Class" parent="eagleedu_main_menu_conf" sequence="1"/>
+    <menuitem id="eagleedu_submenu_class_conf" name="Class" parent="eagleedu_main_menu_conf" sequence="1"/>
 
-    <menuitem action="action_eagleedu_standard_class" parent="eagleedu_submenu_class_conf"
-              id="menu_action_eagleedu_standard_class" name = "Standard Class" sequence="30"/>
+    <menuitem action="action_eagleedu_class" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_class" name = "Standard Class Level" sequence="35"/>
 
 
 </eagle>

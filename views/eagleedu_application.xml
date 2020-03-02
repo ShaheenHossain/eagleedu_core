@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="st_father_name"/>
                     <field name="st_mother_name"/>
-                    <field name="standard_class"/>
+                    <field name="class_id"/>
                     <field name="academic_year"/>
                 </tree>
             </field>
@@ -72,7 +72,7 @@
 
                   <group string="Academic Information">
                     <field name="academic_year"/>
-                    <field name="standard_class" string="Wish to Admit"/>
+                    <field name="class_id" string="Wish to Admit"/>
                     <field name="group_division" string="Group/Division"/>
                   </group>
 

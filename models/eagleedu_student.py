@@ -32,9 +32,8 @@ class EagleeduStudent(models.Model):
     application_no = fields.Char(string='Application  No', required=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
-    standard_class = fields.Many2one('eagleedu.standard_class', string="Class Name", help="Enter Class Name")
-    class_id = fields.Many2one('eagleedu.standard_class', string="Class")
-    full_class_id = fields.Many2one('eagleedu.class.division', string="Class")
+    admission_class = fields.Many2one('eagleedu.class', string="Class Name", help="Enter Class Name")
+    class_id = fields.Many2one('eagleedu.class.division', string="Class")
     section_id = fields.Many2one('eagleedu.class.section', string="Section", help="Enter Class Section Name")
     group_division = fields.Many2one('eagleedu.group_division', string="Group Name", help="Enter Class Section Name")
     academic_year = fields.Many2one('eagleedu.academic.year', string= "Academic Year", help="Select Academic Year")
@@ -89,5 +88,7 @@ class EagleeduStudent(models.Model):
     mobile = fields.Char(string="Student Mobile", help="Enter Mobile num for contact purpose")
     nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19,
                                   help="Select the Nationality")
+    assigned=fields.Boolean(default=False)
+    application_id = fields.Many2one('eagleedu.application', string="Application No")
 
 

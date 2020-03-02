@@ -10,7 +10,7 @@
                 <field name="name"/>
                 <field name="st_father_name"/>
                 <field name="st_mother_name"/>
-                <field name="standard_class"/>
+                <field name="class_id"/>
                 <field name="academic_year"/>
             </tree>
         </field>
@@ -52,7 +52,7 @@
                             <separator string="Basic Details"/>
                               <group>
                                 <field name="academic_year" string="Academic Year"/>
-                                <field name="standard_class" string="Class"/>
+                                <field name="class_id" string="Class"/>
                                 <field name="group_division" string="Group/Division"/>
                                 <field name="section_id" string="Section"/>
                                 <field name="roll_no" string="Roll No."/>

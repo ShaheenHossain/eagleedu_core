@@ -2,10 +2,9 @@ from . import eagleedu_application
 from . import eagleedu_student
 from . import eagleedu_instructor
 from . import eagleedu_academic_year
-from . import eagleedu_standard_class
+from . import eagleedu_class
 from . import eagleedu_group_division
 from . import eagleedu_assigning_class
-
 from . import eagleedu_class_wizard
 from . import eagleedu_class_division
 from . import eagleedu_class_section
