@@ -35,6 +35,7 @@ class EagleeduApplication(models.Model):
 
     register_id = fields.Many2one('eagleedu.register', string="Admission Register", required=False,
                                       help="Enter the admission register Name")
+
     academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year',string='Academic Year',
                                        help="Choose Academic year for which the admission is choosing")
 

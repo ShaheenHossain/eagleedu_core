@@ -60,10 +60,11 @@
                   </h2>
                 </div>
                  <group>
-                  <group string="Basic Details">
+                  <group string="Admission Details">
+                    <field name="register_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     <field name="date_of_birth"/>
                     <field name="age"/>
-                    <field name="application_date"/>
+                    <field name="application_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     <field name="st_gender"/>
                     <field name="st_blood_group"/>
                     <field name="religious_id"/>
@@ -71,7 +72,7 @@
                   </group>
 
                   <group string="Academic Information">
-                    <field name="academic_year"/>
+                    <field name="academic_year_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     <field name="class_id" string="Wish to Admit"/>
                     <field name="group_division" string="Group/Division"/>
                   </group>
