@@ -25,7 +25,7 @@
                         <group>
                             <field name="class_category"/>
                             <field name="name"/>
-                            <field name="code"/>
+                            <field name="code" style="text-transform: lowercase;"/>
                         </group>
                         <group>
                             <field name="roman_name"/>
