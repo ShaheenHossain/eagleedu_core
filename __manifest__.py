@@ -13,6 +13,14 @@ This module for This is a e education manament system
     'category': 'Education',
     'depends': [ 'base', ],
     'data':[
+            'data/eagleedu.class.category.csv',
+            'data/eagleedu.class.section.csv',
+            'data/eagleedu.subject.csv',
+            'data/eagleedu.group_division.csv',
+            'data/eagleedu.roomnumber.csv',
+            'data/eagleedu.roomname.csv',
+            'data/eagleedu.class.csv',
+
             'views/eagleedu_register.xml',
             'views/eagleedu_application.xml',
             'views/eagleedu_student.xml',
