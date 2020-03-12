@@ -27,7 +27,7 @@ class EagleeduAcademicYear(models.Model):
 
     name = fields.Char(string='Year Name', required=True, help='Name of academic year')
     # academic_year_id = fields.Char(string='Year Name', required=True, help='Name of academic year')
-    ay_code = fields.Char(string='Code', related='name', help='Code of academic year')
+    ay_code = fields.Char(string='Code', compute='set_ay_code', required=True, help='Code of academic year') # related='name',
     sequence = fields.Integer(string='Sequence', required=True)
 
     current_year = datetime.now().year
@@ -65,6 +65,12 @@ class EagleeduAcademicYear(models.Model):
         vals['sequence'] = self.env['ir.sequence'].next_by_code('eagleedu.academic.year')
         res = super(EagleeduAcademicYear, self).create(vals)
         return res
+
+    @api.onchange('name')
+    def set_ay_code(self):
+        self.ay_code = self.name
+
+    #field_2 = fields.Char(string='Test', related='field_1')
 
     # @api.onchange('academic_year_id')
     # def set_ay_code(self):
