@@ -141,6 +141,22 @@ class EagleeduApplication(models.Model):
     nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19,
                                   help="Select the Nationality")
 
+    guardian_relation = fields.Many2one('eagleedu.guardian.relation', string="Relation to Guardian",  required=False,
+                                        help="Tell us the Relation toyour guardian")
+    #### guardian Details
+    guardian_name = fields.Char(string="Guardian's Name", help="Proud to say my guardian is",required=False)
+    guardian_mobile = fields.Char(string="guardian's Mobile No", help="guardian's Mobile No")
+    description = fields.Text(string="Note")
+
+    @api.onchange('guardian_relation')
+    def guardian_relation_changed(self):
+        for rec in self:
+            if rec.guardian_relation.name:
+                if  rec.guardian_relation.name=='Father':
+                    rec.guardian_name=rec.st_father_name
+                elif  rec.guardian_relation.name=='Mother':
+                    rec.guardian_name = rec.st_mother_name
+
 
     @api.model
     def create(self, vals):
@@ -191,6 +207,8 @@ class EagleeduApplication(models.Model):
                 'name': rec.name,
                 'st_name_b': rec.st_name_b,
                 'st_image': rec.st_image,
+                # 'guardian_relation': rec.guardian_relation.id,
+                # 'guardian_name': guardian,
                 'application_no': rec.id,
                 'st_father_name': rec.st_father_name,
                 'st_father_name_b': rec.st_father_name_b,
@@ -263,7 +281,5 @@ class EagleeduOrganization(models.Model):
     _description = 'This the Organization'
     _inherit = 'res.company'
 
-class EagleeduGuardianRelation(models.Model):
-    _name = 'eagleedu.guardian.relation'
-    _description = 'This the Guardian'
-    name = fields.Char()
+
+

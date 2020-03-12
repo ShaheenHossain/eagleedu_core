@@ -78,9 +78,13 @@
                   </group>
 
                   <group string="Student Information">
+                    <field name="guardian_relation"/>
+                    <field name="guardian_name"/>
+                    <field name="guardian_mobile"/>
                     <field name="email"/>
                     <field name="phone"/>
                     <field name="mobile"/>
+                    <field name="description"/>
                   </group>
 
                   <group string="Parent's Information">
