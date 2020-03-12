@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 from eagle import fields, models, api, _
 from eagle.exceptions import ValidationError
 
@@ -17,9 +20,11 @@ class EagleeduAssigningClass(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done')],
                              string='State', required=True, default='draft', track_visibility='onchange')
 
-    assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
 
-    #assign_date = fields.Datetime(string='Asigned Date', default=datetime.today())
+    assign_date = fields.Datetime(string='Asigned Date', default=datetime.today())
+
+    #assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
+
 
     @api.model
     def get_class_assign_name(self):
@@ -123,6 +128,11 @@ class EagleeduStudentList(models.Model):
     connect_id = fields.Many2one('eagleedu.assigning.class', string='Class')
     student_id = fields.Many2one('eagleedu.student', string='Student')
     stu_id=fields.Char(string="Id",related='student_id.student_id')
+    adm_no=fields.Char(string="Student ID", related='student_id.student_id') # have to do something
     class_id = fields.Many2one('eagleedu.class', string='Level')
     section_id = fields.Many2one('eagleedu.class.section', string='Class')
     roll_no = fields.Integer( string='Roll No')
+
+    # @api.onchange('name')
+    # def set_ay_code(self):
+    #     self.ay_code = self.name
