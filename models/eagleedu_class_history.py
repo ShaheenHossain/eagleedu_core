@@ -20,7 +20,7 @@ class EagleeduClassHistory(models.Model):
     roll_no=fields.Integer('Roll No',required=True)
     compulsory_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
                                          'compulsory_subjects','compulsory_for',string='Compulsory')
-    selective_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
+    selective_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_1_rel',
                                         'selective_subjects','selective_for',string='Selective')
     optional_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_optional_rel',
                                         'optional_subjects','optional_for',string='Optional')
