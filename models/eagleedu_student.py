@@ -34,10 +34,10 @@ class EagleeduStudent(models.Model):
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
     admission_class = fields.Many2one('eagleedu.class', string="Class Name", help="Enter Class Name")
     class_id = fields.Many2one('eagleedu.class.division', string="Class")
-    section_id = fields.Many2one('eagleedu.class.section', string="Section", help="Enter Class Section Name")
+    section_id = fields.Many2one('eagleedu.class.section', related='class_id.section_id', string="Section", help="Enter Class Section Name")
     group_division = fields.Many2one('eagleedu.group_division', string="Group Name", help="Enter Class Section Name")
     # academic_year_id = fields.Many2one('eagleedu.academic.year', related='class_id.academic_year', string= "Academic Year", help="Select Academic Year")
-    academic_year = fields.Many2one('eagleedu.academic.year', string= "Academic Year", help="Select Academic Year")
+    academic_year_id = fields.Many2one('eagleedu.academic.year', related='class_id.academic_year_id', string= "Academic Year", help="Select Academic Year")
     roll_no = fields.Integer(string="Roll No.", help="Enter Roll No.")
 
     st_name_b = fields.Char(string='Student Bangla Name')
@@ -93,3 +93,6 @@ class EagleeduStudent(models.Model):
     application_id = fields.Many2one('eagleedu.application', string="Application No")
 
 
+    @api.onchange('class_id')
+    def set_div_ay_sec(self):
+        self.ay_code = self.name

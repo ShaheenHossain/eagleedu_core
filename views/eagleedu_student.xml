@@ -11,7 +11,7 @@
                 <field name="st_father_name"/>
                 <field name="st_mother_name"/>
                 <field name="class_id"/>
-                <field name="academic_year"/>
+                <field name="academic_year_id"/>
             </tree>
         </field>
     </record>
@@ -51,11 +51,11 @@
 
                             <separator string="Basic Details"/>
                               <group>
-                                <field name="academic_year" string="Academic Year"/>
                                 <field name="class_id" string="Class"/>
-                                <field name="group_division" string="Group/Division"/>
+                                <field name="academic_year_id" string="Academic Year"/>
                                 <field name="section_id" string="Section"/>
                                 <field name="roll_no" string="Roll No."/>
+                                <field name="group_division" string="Group/Division"/>
                               </group>
                             <separator string="Student Information"/>
                                 <group>
