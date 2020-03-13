@@ -9,7 +9,7 @@ from datetime import datetime
 class EagleeduAssigningClass(models.Model):
     _name = 'eagleedu.assigning.class'
     _description = 'Assign the Students to Class'
-    # _inherit = ['mail.thread']
+    _inherit = ['mail.thread']
     # _rec_name = 'class_assign_name'
     name = fields.Char('Class Assign Register', compute='get_class_assign_name')
     keep_roll_no=fields.Boolean("keep Roll No")

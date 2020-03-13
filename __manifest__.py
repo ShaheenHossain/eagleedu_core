@@ -11,7 +11,7 @@ This module for This is a e education manament system
     'website': "http://www.eagle-erp.com",
     'support': 'info@eagle-erp.com',
     'category': 'Education',
-    'depends': [ 'base', ],
+    'depends': [ 'base', 'mail', ],
     'data':[
             'data/eagleedu.class.category.csv',
             'data/eagleedu.class.section.csv',

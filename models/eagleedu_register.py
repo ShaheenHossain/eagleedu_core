@@ -17,14 +17,21 @@ class EagleeduRegister(models.Model):
     # ending_day_of_current_year = datetime.now().date().replace(month=12, day=31)
 
 
-    @api.onchange('standard','academic_year')
+    @api.onchange('class_category', 'standard','academic_year')
     def get_name(self):
         for rec in self:
-            if rec.standard and rec.academic_year:
-                rec.name=rec.standard.name +'-'+rec.academic_year.name+' '+'Admission'
+            if rec.class_category and rec.standard and rec.academic_year:
+                rec.name=rec.class_category.name + rec.standard.name +'-'+rec.academic_year.name+' '+'Admission'
 
-    @api.onchange ('class_category', 'standard')
-    def get_name(self):
-        for rec in self:
-            if rec.class_category and rec.standard:
-                rec.name =rec.class_category.name + '-' +rec.standard.name
+    # @api.onchange ('class_category', 'standard')
+    # def get_name(self):
+    #     for rec in self:
+    #         if rec.class_category and rec.standard:
+    #             rec.name =rec.class_category.name + '-' +rec.standard.name
+    #
+    #
+    # @api.onchange('standard','academic_year')
+    # def get_name(self):
+    #     for rec in self:
+    #         if rec.standard and rec.academic_year:
+    #             rec.name=rec.standard.name +'-'+rec.academic_year.name+' '+'Admission'

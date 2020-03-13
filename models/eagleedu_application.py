@@ -11,7 +11,7 @@ class EagleeduApplication(models.Model):
     _name = 'eagleedu.application'
     _description = 'This is Student Application Form'
     # _order = 'id desc'
-    # _inherit = ['mail.thread']
+    _inherit = ['mail.thread']
 
     application_no = fields.Char(string='Application No.', required=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
