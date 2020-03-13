@@ -126,9 +126,9 @@ class EagleeduStudentList(models.Model):
     # _inherit = ['mail.thread']
 
     connect_id = fields.Many2one('eagleedu.assigning.class', string='Class')
-    student_id = fields.Many2one('eagleedu.student', string='Student')
-    stu_id=fields.Char(string="Id",related='student_id.student_id')
-    adm_no=fields.Char(string="Student ID", related='student_id.student_id') # have to do something
+    student_id = fields.Many2one('eagleedu.student', string='Students Name')
+    # stu_id=fields.Char(string="Id",related='student_id.student_id')
+    adm_no=fields.Char(string="Student ID", related='student_id.adm_no')
     class_id = fields.Many2one('eagleedu.class', string='Level')
     section_id = fields.Many2one('eagleedu.class.section', string='Class')
     roll_no = fields.Integer( string='Roll No')

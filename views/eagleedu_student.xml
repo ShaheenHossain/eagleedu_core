@@ -59,6 +59,7 @@
                               </group>
                             <separator string="Student Information"/>
                                 <group>
+                                    <field name="application_no"/>
                                     <field name="date_of_birth"/>
                                     <field name="registration_date"/>
                                     <field name="st_gender"/>

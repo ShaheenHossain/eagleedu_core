@@ -17,6 +17,7 @@ class EagleeduClassHistory(models.Model):
     from_date=fields.Date('From')
     till_date=fields.Date('Till')
     student_id = fields.Many2one('eagleedu.student', string='Students')
+    adm_no=fields.Char(string="Student ID", related='student_id.adm_no')
     roll_no=fields.Integer('Roll No',required=True)
     compulsory_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
                                          'compulsory_subjects','compulsory_for',string='Compulsory')
