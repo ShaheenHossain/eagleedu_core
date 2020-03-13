@@ -36,6 +36,7 @@ class EagleeduStudent(models.Model):
     class_id = fields.Many2one('eagleedu.class.division', string="Class")
     section_id = fields.Many2one('eagleedu.class.section', string="Section", help="Enter Class Section Name")
     group_division = fields.Many2one('eagleedu.group_division', string="Group Name", help="Enter Class Section Name")
+    # academic_year_id = fields.Many2one('eagleedu.academic.year', related='class_id.academic_year', string= "Academic Year", help="Select Academic Year")
     academic_year = fields.Many2one('eagleedu.academic.year', string= "Academic Year", help="Select Academic Year")
     roll_no = fields.Integer(string="Roll No.", help="Enter Roll No.")
 

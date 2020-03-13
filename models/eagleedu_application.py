@@ -36,7 +36,7 @@ class EagleeduApplication(models.Model):
     register_id = fields.Many2one('eagleedu.register', string="Admission Register", required=False,
                                       help="Enter the admission register Name")
 
-    academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year',string='Academic Year',
+    academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year', string='Academic Year',
                                        help="Choose Academic year for which the admission is choosing")
 
 
@@ -46,7 +46,6 @@ class EagleeduApplication(models.Model):
         for emp in self:
             age = relativedelta(datetime.now().date(), fields.Datetime.from_string(emp.date_of_birth)).years
             emp.age = str(age) + " Years"
-
 
 
     # age = fields.Char(string='Age', compute='_compute_age')
@@ -86,8 +85,6 @@ class EagleeduApplication(models.Model):
     #         if age_calc < 5:
     #             raise ValidationError(_('''Age of student should be greater
     #              than 5 years!'''))
-
-
 
 
     st_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
@@ -153,9 +150,13 @@ class EagleeduApplication(models.Model):
         for rec in self:
             if rec.guardian_relation.name:
                 if  rec.guardian_relation.name=='Father':
+                    rec.guardian_mobile = rec.father_mobile
                     rec.guardian_name=rec.st_father_name
                 elif  rec.guardian_relation.name=='Mother':
+                    rec.guardian_mobile = rec.mother_mobile
                     rec.guardian_name = rec.st_mother_name
+
+
 
 
     @api.model
