@@ -39,6 +39,7 @@ class EagleeduApplication(models.Model):
     academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year', string='Academic Year',
                                        help="Choose Academic year for which the admission is choosing")
 
+    class_name = fields.Many2one('eagleedu.class', string='Wish to admit')
 
     @api.multi
     @api.depends('date_of_birth')
@@ -225,6 +226,7 @@ class EagleeduApplication(models.Model):
                 'st_passport_no': rec.st_passport_no,
                 'nationality': rec.nationality.id,
                 'academic_year': rec.academic_year.id,
+                'class_name': rec.class_name.id,
                 # 'standard_class': rec.standard_class.id,
                 'admission_class': rec.register_id.standard.id,
                 'group_division': rec.group_division.id,
@@ -243,7 +245,7 @@ class EagleeduApplication(models.Model):
                 'guardian_name': rec.guardian_name,
                 'religious_id': rec.religious_id.id,
                 # 'is_student': True,
-                'student_id': rec.student_id,
+                'student_id': rec.student_id, rec.student_id,
                 'roll_no': rec.roll_no,
                 'application_no': rec.application_no,
             }

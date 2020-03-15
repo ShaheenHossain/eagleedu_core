@@ -51,7 +51,8 @@
 
                             <separator string="Basic Details"/>
                               <group>
-                                <field name="class_id" string="Class"/>
+                                <field name="class_id" string="Class Section"/>
+                                <field name="class_name" string="Class Name"/>
                                 <field name="academic_year_id" string="Academic Year"/>
                                 <field name="section_id" string="Section"/>
                                 <field name="roll_no" string="Roll No."/>
