@@ -16,3 +16,4 @@ from . import eagleedu_roomname
 from . import eagleedu_roomnumber
 from . import eagleedu_class_category
 from . import eagleedu_guardian_relation
+from . import eagleedu_campus

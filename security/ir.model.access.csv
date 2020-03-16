@@ -20,3 +20,5 @@ access_eagleedu_roomname,access.eagleedu.roomname,model_eagleedu_roomname,,1,1,1
 access_eagleedu_roomnumber,access.eagleedu.roomnumber,model_eagleedu_roomnumber,,1,1,1,1
 access_eagleedu_class_category,access.eagleedu.class.category,model_eagleedu_class_category,,1,1,1,1
 access_eagleedu_guardian_relation,access.eagleedu.guardian.relation,model_eagleedu_guardian_relation,,1,1,1,1
+access_eagleedu_campus,access.eagleedu.campus,model_eagleedu_campus,,1,1,1,1
+access_eagleedu_shift,access.eagleedu.shift,model_eagleedu_shift,,1,1,1,1

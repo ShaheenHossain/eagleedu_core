@@ -3,7 +3,9 @@
 from eagle import models, fields, api, _
 from datetime import date
 
-from datetime import datetime
+from eagle.exceptions import ValidationError
+
+import datetime
 from dateutil.relativedelta import relativedelta
 
 
@@ -32,6 +34,8 @@ class EagleeduApplication(models.Model):
     mother_mobile = fields.Char(string="Mother's Mobile No", help="mother's Mobile No")
     date_of_birth = fields.Date(string="Date Of birth", help="Enter your DOB")
     age = fields.Char(string="Age", compute="_compute_age")
+    age_year = fields.Integer(string="Year", compute="_compute_age")
+    age_month = fields.Integer(string="Month", compute="_compute_age")
 
     register_id = fields.Many2one('eagleedu.register', string="Admission Register", required=False,
                                       help="Enter the admission register Name")
@@ -41,13 +45,55 @@ class EagleeduApplication(models.Model):
 
     class_name = fields.Many2one('eagleedu.class', string='Wish to admit')
 
-    @api.multi
+    # @api.multi
+    # @api.depends('date_of_birth')
+    # def _compute_age(self):
+    #     for emp in self:
+    #         age = relativedelta(datetime.now().date(), fields.Datetime.from_string(emp.date_of_birth)).years
+    #         emp.age = str(age) + " Years"
+
     @api.depends('date_of_birth')
     def _compute_age(self):
-        for emp in self:
-            age = relativedelta(datetime.now().date(), fields.Datetime.from_string(emp.date_of_birth)).years
-            emp.age = str(age) + " Years"
+        currentDate = datetime.datetime.now()
+        curYear = currentDate.year
+        curMonth = currentDate.month
+        curDay = currentDate.day
+        # curTime = currentDate.time
+        for rec in self:
+            if rec.date_of_birth:
+                # if rec.retired:
+                #     curYear = rec.retired.year
+                #     curMonth = rec.retired.month
+                #     curDay = rec.retired.day
+                # else:
 
+                lyear = rec.date_of_birth.year
+                lmonth = rec.date_of_birth.month
+                lday = rec.date_of_birth.day
+                lday = curDay - lday
+                lmonth = curMonth - lmonth
+                lyear = curYear - lyear
+                length_string = ""
+                if lday < 0:
+                    lday = lday + 30
+                    lmonth = lmonth - 1
+                if lmonth < 0:
+                    lmonth = lmonth + 12
+                    lyear = lyear - 1
+                rec.age_year=lyear
+                rec.age_month=lmonth
+                if lyear > 0:
+                    length_string = length_string + str(lyear) + " Year "
+                if lmonth > 0:
+                    length_string = length_string + str(lmonth) + " Month "
+                if lday > 0:
+                    length_string = length_string + str(lday) + " Day "
+                rec.age = length_string
+            # else:
+            #     rec.service_length = ""
+            #     rec.service_year = 0
+            #     rec.service_month = 0
+            #     rec.service_day = 0
 
     # age = fields.Char(string='Age', compute='_compute_age')
     #
@@ -75,17 +121,20 @@ class EagleeduApplication(models.Model):
     #             if age_calc > 0.0:
     #                 rec.age = age_calc
 
-    # @api.constrains('date_of_birth')
-    # def check_age(self):
+    @api.constrains('date_of_birth')
+    def check_age(self):
     #     '''Method to check age should be greater than 5'''
     #     current_dt = date.today()
     #     if self.date_of_birth:
     #         start = self.date_of_birth
     #         age_calc = ((current_dt - start).days / 365)
     #         # Check if age less than 5 years
-    #         if age_calc < 5:
-    #             raise ValidationError(_('''Age of student should be greater
-    #              than 5 years!'''))
+            if self.age_year <5:
+                if self.age_year==4 and self.age_month > 6:
+                    pass
+                else:
+                    raise ValidationError(_('''Age of student should be greater
+                     than 4 years and 6 month !'''))
 
 
     st_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
@@ -245,7 +294,7 @@ class EagleeduApplication(models.Model):
                 'guardian_name': rec.guardian_name,
                 'religious_id': rec.religious_id.id,
                 # 'is_student': True,
-                'student_id': rec.student_id, rec.student_id,
+                'student_id': rec.student_id,
                 'roll_no': rec.roll_no,
                 'application_no': rec.application_no,
             }
