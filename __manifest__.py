@@ -3,9 +3,9 @@
 {
     'name': "Eagle Education Core",
     'version': '1.1',
-    'summary': """This is a e education manament system""",
+    'summary': """This is a e education management system""",
     'description': """
-This module for This is a e education manament system 
+This module for This is a e education management system 
     """,
     'author': "Eagle ERP",
     'website': "http://www.eagle-erp.com",
@@ -13,14 +13,14 @@ This module for This is a e education manament system
     'category': 'Education',
     'depends': [ 'base', 'mail', ],
     'data':[
-            'data/eagleedu.class.category.csv',
-            'data/eagleedu.class.section.csv',
-            'data/eagleedu.subject.csv',
-            'data/eagleedu.group_division.csv',
-            'data/eagleedu.roomnumber.csv',
-            'data/eagleedu.roomname.csv',
-            'data/eagleedu.class.csv',
-            'data/eagleedu.guardian.relation.csv',
+            # 'data/eagleedu.class.category.csv',
+            # 'data/eagleedu.class.section.csv',
+            # 'data/eagleedu.subject.csv',
+            # 'data/eagleedu.group_division.csv',
+            # 'data/eagleedu.roomnumber.csv',
+            # 'data/eagleedu.roomname.csv',
+            # 'data/eagleedu.class.csv',
+            # 'data/eagleedu.guardian.relation.csv',
 
             'views/eagleedu_register.xml',
             'views/eagleedu_application.xml',

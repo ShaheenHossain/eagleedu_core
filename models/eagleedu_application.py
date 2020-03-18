@@ -322,6 +322,7 @@ class EagleeduBddivision(models.Model):
 class EagleeduBddistrict(models.Model):
     _name = 'eagleedu.bddistrict'
     _description = 'This the Bangladesh District'
+    _rec_name = 'name'
     name = fields.Char()
 
 class EagleeduReligious(models.Model):
