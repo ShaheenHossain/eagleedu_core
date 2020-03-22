@@ -25,6 +25,9 @@
                     <group>
                         <group>
                             <field name="class_category"/>
+<!--
+                            <field name="class_category_auto"/>
+-->
                             <field name="standard"/>
                             <field name="academic_year"/>
                             <field name="start_time"/>
