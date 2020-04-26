@@ -28,7 +28,7 @@ class EagleeduStudent(models.Model):
     partner_id = fields.Many2one(
         'res.partner', string='Partner', required=True, ondelete="cascade")
     adm_no = fields.Char(string="Admission No.", readonly=True)
-    st_image = fields.Binary(string='Image', help="Provide the image of the Student")
+    # st_image = fields.Binary(string='Image', help="Provide the image of the Student")
     application_no = fields.Char(string='Application  No', required=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
